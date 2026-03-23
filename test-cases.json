@@ -1,0 +1,135 @@
+[
+  {
+    "id": "phish_001",
+    "category": "phishing",
+    "difficulty": "easy",
+    "text": "Your account has been temporarily restricted. Please verify your identity to restore access: http://secure-login-update.xyz",
+    "expected": { "risk": "High" }
+  },
+  {
+    "id": "phish_002",
+    "category": "phishing",
+    "difficulty": "medium",
+    "text": "Your acc0unt has been temp0rarily restricted. Please c0nfirm your inf0rmation to restore access. hxxp://secure-login-update[.]xyz",
+    "expected": { "risk": "High" }
+  },
+  {
+    "id": "phish_003",
+    "category": "phishing",
+    "difficulty": "hard",
+    "text": "We detected unusual sign-in behavior. To continue using your services, v e r i f y your identity within 24 hours at secure-login-update dot xyz",
+    "expected": { "risk": "High" }
+  },
+  {
+    "id": "phish_004",
+    "category": "brand_impersonation",
+    "difficulty": "hard",
+    "text": "Dear customer, your p.a.y.p.a.l account is limited due to unusual activity. Please confirm your details: paypal-security-check dot xyz",
+    "expected": { "risk": "High" }
+  },
+  {
+    "id": "phish_005",
+    "category": "brand_impersonation",
+    "difficulty": "medium",
+    "text": "Microsoft security alert: unusual sign in attempt detected. Review immediately: hxxps://office-verify-center[.]top",
+    "expected": { "risk": "High" }
+  },
+  {
+    "id": "delivery_001",
+    "category": "delivery",
+    "difficulty": "medium",
+    "text": "USPS: your parcel is on hold due to unpaid customs fee. Pay now to release: usps-delivery-help dot click",
+    "expected": { "risk": "High" }
+  },
+  {
+    "id": "delivery_002",
+    "category": "delivery",
+    "difficulty": "easy",
+    "text": "FedEx notice: delivery failed. Update address here: http://fedex-track-update.xyz",
+    "expected": { "risk": "High" }
+  },
+  {
+    "id": "payment_001",
+    "category": "payment",
+    "difficulty": "easy",
+    "text": "Your subscription has expired. Update your payment information immediately to avoid service interruption.",
+    "expected": { "risk": "Medium" }
+  },
+  {
+    "id": "payment_002",
+    "category": "payment",
+    "difficulty": "hard",
+    "text": "We could not process your recent payment. Please re-enter your billing details now to avoid account suspension: billing-update-center dot xyz",
+    "expected": { "risk": "High" }
+  },
+  {
+    "id": "giftcard_001",
+    "category": "giftcard",
+    "difficulty": "easy",
+    "text": "I need you to purchase Apple gift cards immediately and send me the codes. I am in a meeting.",
+    "expected": { "risk": "High" }
+  },
+  {
+    "id": "giftcard_002",
+    "category": "giftcard",
+    "difficulty": "hard",
+    "text": "Hey, can you grab a few gift cards for the team rewards? I’ll reimburse you later. Send me the codes when done.",
+    "expected": { "risk": "High" }
+  },
+  {
+    "id": "crypto_001",
+    "category": "crypto",
+    "difficulty": "easy",
+    "text": "Send bitcoin to this wallet immediately to unlock your account access.",
+    "expected": { "risk": "High" }
+  },
+  {
+    "id": "crypto_002",
+    "category": "crypto",
+    "difficulty": "hard",
+    "text": "Due to suspicious activity, your account is locked. To restore access, transfer funds via crypto to verify ownership.",
+    "expected": { "risk": "High" }
+  },
+  {
+    "id": "job_001",
+    "category": "job",
+    "difficulty": "medium",
+    "text": "We are offering you a remote job opportunity. You will receive a check to deposit and send part of the funds back.",
+    "expected": { "risk": "High" }
+  },
+  {
+    "id": "prize_001",
+    "category": "prize",
+    "difficulty": "easy",
+    "text": "Congratulations! You have won a $1000 gift card. Click here to claim your reward.",
+    "expected": { "risk": "High" }
+  },
+  {
+    "id": "benign_001",
+    "category": "legit",
+    "difficulty": "easy",
+    "text": "Your Amazon order has shipped. Track your package in the Amazon app.",
+    "expected": { "risk": "Low" }
+  },
+  {
+    "id": "benign_002",
+    "category": "legit",
+    "difficulty": "medium",
+    "text": "Microsoft account security notice. Review recent sign-in activity at https://account.microsoft.com",
+    "expected": { "risk": "Low" }
+  },
+  {
+    "id": "benign_003",
+    "category": "legit",
+    "difficulty": "hard",
+    "text": "Reminder: your bank statement is ready. Log in through your bank’s official app or website to view it.",
+    "expected": { "risk": "Low" }
+  },
+  {
+    "id": "edge_001",
+    "category": "edge_case",
+    "difficulty": "hard",
+    "text": "Review notice: account-update-center.xyz",
+    "expected": { "risk": "Medium" }
+  }
+]

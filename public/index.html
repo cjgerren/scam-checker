@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scam Checker</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b1020;
+      --panel: #121a30;
+      --panel-2: #17213b;
+      --text: #eef3ff;
+      --muted: #aeb8d1;
+      --border: #26314f;
+      --accent: #78a8ff;
+      --success: #33c26b;
+      --danger: #ea5455;
+      --warning: #f0b24b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #0a0f1d 0%, #11182c 100%);
+      color: var(--text);
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 32px;
+    }
+
+    .lead {
+      margin: 0 0 24px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .panel {
+      background: rgba(18, 26, 48, 0.95);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+
+    .card {
+      background: rgba(23, 33, 59, 0.95);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      margin-top: 14px;
+    }
+
+    .card h2,
+    .card h3 {
+      margin-top: 0;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    textarea,
+    input[type="file"] {
+      width: 100%;
+    }
+
+    textarea {
+      min-height: 180px;
+      resize: vertical;
+      background: #0d1427;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      font: inherit;
+    }
+
+    .helper {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    button {
+      border: 1px solid var(--border);
+      background: #1b2745;
+      color: var(--text);
+      border-radius: 10px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    button:hover {
+      background: #223154;
+    }
+
+    .status {
+      margin-top: 12px;
+      color: var(--muted);
+      min-height: 20px;
+    }
+
+    .status.error {
+      color: #ff9b9b;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .risk-low {
+      background: rgba(51, 194, 107, 0.18);
+      color: #8ef0b2;
+      border: 1px solid rgba(51, 194, 107, 0.45);
+    }
+
+    .risk-medium {
+      background: rgba(240, 178, 75, 0.18);
+      color: #ffd48f;
+      border: 1px solid rgba(240, 178, 75, 0.45);
+    }
+
+    .risk-high {
+      background: rgba(234, 84, 85, 0.18);
+      color: #ff9e9f;
+      border: 1px solid rgba(234, 84, 85, 0.45);
+    }
+
+    #results {
+      margin-top: 16px;
+    }
+
+    #results:empty {
+      display: none;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-x: auto;
+      margin: 0;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    .regression-section {
+      margin-top: 18px;
+    }
+
+    .regression-section h3 {
+      margin: 0 0 10px;
+    }
+
+    .regression-results {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .test-bubble {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1;
+      white-space: nowrap;
+      border: 1px solid transparent;
+    }
+
+    .test-bubble.pass {
+      background: rgba(51, 194, 107, 0.18);
+      color: #8ef0b2;
+      border-color: rgba(51, 194, 107, 0.45);
+    }
+
+    .test-bubble.fail {
+      background: rgba(234, 84, 85, 0.18);
+      color: #ff9e9f;
+      border-color: rgba(234, 84, 85, 0.45);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Scam Checker</h1>
+    <p class="lead">
+      Paste text, upload an email, or upload a screenshot to analyze suspicious messages.
+    </p>
+
+    <div class="panel">
+      <label for="textInput">Paste text or email content</label>
+      <textarea
+        id="textInput"
+        placeholder="Paste suspicious message text here..."
+      ></textarea>
+      <div class="helper">
+        Good for copied emails, texts, bank notices, delivery messages, and suspicious warnings.
+      </div>
+
+      <div class="button-row">
+        <button id="analyzeTextBtn" type="button">Analyze Pasted Text</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <label for="fileInput">Upload a file or screenshot</label>
+      <input id="fileInput" type="file" />
+      <div class="helper">
+        Supported: .txt, .eml, .json, .csv, .png, .jpg, .jpeg, .webp
+      </div>
+
+      <div class="button-row">
+        <button id="analyzeFileBtn" type="button">Analyze Uploaded File</button>
+        <button id="clearBtn" type="button">Clear</button>
+      </div>
+
+      <div id="status" class="status"></div>
+
+      <div id="results"></div>
+
+      <section class="regression-section">
+        <h3>Regression Checks</h3>
+        <div id="regression-results" class="regression-results"></div>
+      </section>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

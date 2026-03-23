@@ -1,0 +1,25 @@
+{
+  "name": "scam-checker",
+  "version": "1.0.0",
+  "description": "Paste a message and get scam risk analysis",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test:regression": "node run-tests.js"
+  },
+  "keywords": [
+    "scam-checker",
+    "phishing",
+    "express",
+    "prototype"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^4.22.1",
+    "mailparser": "^3.9.5",
+    "multer": "^2.1.1",
+    "tesseract.js": "^7.0.0"
+  }
+}
